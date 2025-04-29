@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.5 on win32)" generated="2025-04-29T19:03:33.422662" rpa="false" schemaversion="5">
+<suite id="s1" name="TestesChuckNorris" source="C:\CursoUdemy\RobotFramework\ProjetoChuckNorris\TestesChuckNorris.robot">
+<kw name="Create Session" owner="RequestsLibrary" type="SETUP">
+<msg time="2025-04-29T19:03:33.548764" level="INFO">Creating Session using : alias=api, url=https://api.chucknorris.io, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>https://api.chucknorris.io</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-04-29T19:03:33.548764" elapsed="0.000000"/>
+</kw>
+<test id="s1-t1" name="Consultar Categorias" line="11">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-04-29T19:03:34.532377" level="INFO">GET Request : url=https://api.chucknorris.io/jokes/categories 
+ path_url=/jokes/categories 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-04-29T19:03:34.532377" level="INFO">GET Response : url=https://api.chucknorris.io/jokes/categories 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 29 Apr 2025 22:03:34 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1745964214&amp;sid=812dcc77-0bd0-43b1-a5f1-b25750382959&amp;s=2cvgUSxjknljzkhXBZ7nqzoo01lGkcou22p4bZmKMnI%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1745964214&amp;sid=812dcc77-0bd0-43b1-a5f1-b25750382959&amp;s=2cvgUSxjknljzkhXBZ7nqzoo01lGkcou22p4bZmKMnI%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'Via': '1.1 vegur', 'Cf-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '938217113d70df4f-GIG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=["animal","career","celebrity","dev","explicit","fashion","food","history","money","movie","music","political","religion","science","sport","travel"] 
+ </msg>
+<msg time="2025-04-29T19:03:34.532377" level="INFO">C:\Users\Gabi\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.chucknorris.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-29T19:03:34.532377" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=api</arg>
+<arg>url=/jokes/categories</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-29T19:03:33.548764" elapsed="0.983613"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-04-29T19:03:34.532377" level="INFO">Length is 16.</msg>
+<msg time="2025-04-29T19:03:34.532377" level="INFO">${categories} = 16</msg>
+<var>${categories}</var>
+<arg>${response.json()}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-04-29T19:03:34.532377" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-29T19:03:34.532377" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${categories}</arg>
+<arg>0</arg>
+<doc>Fails if objects are equal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-29T19:03:34.532377" elapsed="0.000000"/>
+</kw>
+<tag>Categoria</tag>
+<status status="PASS" start="2025-04-29T19:03:33.548764" elapsed="0.983613"/>
+</test>
+<test id="s1-t2" name="Consultar Piada Com Categoria Válida" line="17">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-04-29T19:03:34.785269" level="INFO">GET Request : url=https://api.chucknorris.io/jokes/random?category=music 
+ path_url=/jokes/random?category=music 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-04-29T19:03:34.785269" level="INFO">GET Response : url=https://api.chucknorris.io/jokes/random?category=music 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 29 Apr 2025 22:03:35 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1745964214&amp;sid=812dcc77-0bd0-43b1-a5f1-b25750382959&amp;s=2cvgUSxjknljzkhXBZ7nqzoo01lGkcou22p4bZmKMnI%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1745964214&amp;sid=812dcc77-0bd0-43b1-a5f1-b25750382959&amp;s=2cvgUSxjknljzkhXBZ7nqzoo01lGkcou22p4bZmKMnI%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'Via': '1.1 vegur', 'Cf-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '93821716d82edf4f-GIG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"categories":["music"],"created_at":"2020-01-05 13:42:19.104863","icon_url":"https://api.chucknorris.io/img/avatar/chuck-norris.png","id":"rlra7cwks9y5vqwuzz8osq","updated_at":"2020-01-05 13:42:19.104863","url":"https://api.chucknorris.io/jokes/rlra7cwks9y5vqwuzz8osq","value":"\"Let the Bodies Hit the Floor\" was originally written as Chuck Norris' theme song."} 
+ </msg>
+<msg time="2025-04-29T19:03:34.785269" level="INFO">C:\Users\Gabi\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.chucknorris.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-29T19:03:34.785269" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=api</arg>
+<arg>url=/jokes/random?category=music</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-29T19:03:34.532377" elapsed="0.252892"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-04-29T19:03:34.797744" level="INFO">${categories} = ['music']</msg>
+<var>${categories}</var>
+<arg>${response.json()}</arg>
+<arg>categories</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-04-29T19:03:34.785269" elapsed="0.012475"/>
+</kw>
+<kw name="List Should Contain Value" owner="Collections">
+<msg time="2025-04-29T19:03:34.800327" level="INFO">False</msg>
+<arg>${response.json()}</arg>
+<arg>value</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" start="2025-04-29T19:03:34.797744" elapsed="0.002583"/>
+</kw>
+<tag>Válidos</tag>
+<status status="PASS" start="2025-04-29T19:03:34.532377" elapsed="0.270530"/>
+</test>
+<test id="s1-t3" name="Consultar Piada Com Categoria Inválida" line="23">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-04-29T19:03:35.047597" level="INFO">GET Request : url=https://api.chucknorris.io/jokes/random?category=inexistente 
+ path_url=/jokes/random?category=inexistente 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-04-29T19:03:35.047597" level="INFO">GET Response : url=https://api.chucknorris.io/jokes/random?category=inexistente 
+ status=404, reason=Not Found 
+ headers={'Date': 'Tue, 29 Apr 2025 22:03:35 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1745964215&amp;sid=812dcc77-0bd0-43b1-a5f1-b25750382959&amp;s=28gKEWqJPcqEBDuXTx3DQm%2F6JmNZx%2FmDdkSB5XPzw48%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1745964215&amp;sid=812dcc77-0bd0-43b1-a5f1-b25750382959&amp;s=28gKEWqJPcqEBDuXTx3DQm%2F6JmNZx%2FmDdkSB5XPzw48%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'Via': '1.1 vegur', 'Cf-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '938217186d77df4f-GIG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"timestamp":"2025-04-29T22:03:35.220Z","status":404,"error":"Not Found","path":"/jokes/random"} 
+ </msg>
+<msg time="2025-04-29T19:03:35.047597" level="INFO">C:\Users\Gabi\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.chucknorris.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-29T19:03:35.047597" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<var>${response}</var>
+<arg>alias=api</arg>
+<arg>url=/jokes/random?category=inexistente</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-29T19:03:34.804694" elapsed="0.242903"/>
+</kw>
+<kw name="Should Not Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-29T19:03:35.047597" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are equal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-29T19:03:35.047597" elapsed="0.000000"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.text}</arg>
+<arg>erro</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-29T19:03:35.047597" elapsed="0.000000"/>
+</kw>
+<tag>Inválido</tag>
+<status status="PASS" start="2025-04-29T19:03:34.804306" elapsed="0.243291"/>
+</test>
+<test id="s1-t4" name="Consultar Piada Sem Categoria" line="29">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-04-29T19:03:35.317097" level="INFO">GET Request : url=https://api.chucknorris.io/jokes/random 
+ path_url=/jokes/random 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-04-29T19:03:35.319115" level="INFO">GET Response : url=https://api.chucknorris.io/jokes/random 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 29 Apr 2025 22:03:35 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1745964215&amp;sid=812dcc77-0bd0-43b1-a5f1-b25750382959&amp;s=28gKEWqJPcqEBDuXTx3DQm%2F6JmNZx%2FmDdkSB5XPzw48%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1745964215&amp;sid=812dcc77-0bd0-43b1-a5f1-b25750382959&amp;s=28gKEWqJPcqEBDuXTx3DQm%2F6JmNZx%2FmDdkSB5XPzw48%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'Via': '1.1 vegur', 'Cf-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '9382171a1bb9df4f-GIG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"categories":[],"created_at":"2020-01-05 13:42:26.194739","icon_url":"https://api.chucknorris.io/img/avatar/chuck-norris.png","id":"JEwkvthgT6WwDREh4nOUjg","updated_at":"2020-01-05 13:42:26.194739","url":"https://api.chucknorris.io/jokes/JEwkvthgT6WwDREh4nOUjg","value":"Little known fact: Chuck Norris moved to Yugoslavia in the early nineties. They then renamed the country \"Yudontgotoslavia\""} 
+ </msg>
+<msg time="2025-04-29T19:03:35.319115" level="INFO">C:\Users\Gabi\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.chucknorris.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-04-29T19:03:35.319115" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=api</arg>
+<arg>url=/jokes/random</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-04-29T19:03:35.067893" elapsed="0.251222"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<msg time="2025-04-29T19:03:35.319115" level="INFO">False</msg>
+<arg>${response.json()}</arg>
+<arg>value</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-04-29T19:03:35.319115" elapsed="0.000000"/>
+</kw>
+<tag>Random</tag>
+<status status="PASS" start="2025-04-29T19:03:35.063309" elapsed="0.255806"/>
+</test>
+<kw name="Delete All Sessions" owner="RequestsLibrary" type="TEARDOWN">
+<msg time="2025-04-29T19:03:35.330145" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2025-04-29T19:03:35.330145" elapsed="0.001410"/>
+</kw>
+<status status="PASS" start="2025-04-29T19:03:33.422662" elapsed="1.908893"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Categoria</stat>
+<stat pass="1" fail="0" skip="0">Inválido</stat>
+<stat pass="1" fail="0" skip="0">Random</stat>
+<stat pass="1" fail="0" skip="0">Válidos</stat>
+</tag>
+<suite>
+<stat pass="4" fail="0" skip="0" id="s1" name="TestesChuckNorris">TestesChuckNorris</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
